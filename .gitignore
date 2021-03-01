@@ -1,0 +1,11 @@
+
+#Mac OS
+.DS_Store
+
+#Builds
+/bin
+/*-build
+
+#libs
+/cocos2d
+

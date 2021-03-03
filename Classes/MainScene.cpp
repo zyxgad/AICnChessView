@@ -24,13 +24,12 @@
 
 #include "MainScene.h"
 
-#include "managers/GameManager.h"
-
 
 USING_NS_CC;
 
 Scene* MainScene::createScene(){
-	return MainScene::create();
+	Scene* scene = MainScene::create();
+	return scene;
 }
 
 bool MainScene::init(){
@@ -40,9 +39,6 @@ bool MainScene::init(){
 
 	// std::string canWritePath = FileUtils::getInstance()->getWritablePath();
 	// log("You can write files at '%s'", canWritePath.c_str());
-
-	GameManager::getInstance()->initGame(this)
-	GameManager::getInstance()->goHome();
 
 	return true;
 }

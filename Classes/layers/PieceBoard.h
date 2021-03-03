@@ -4,8 +4,9 @@
 
 #include "cocos2d.h"
 
-#include "chessTypes.h"
+#include "CheMacro.h"
 #include "piece/BasePiece.h"
+#include "player/Player.h"
 
 class PieceBoard : public cocos2d::Layer{
 public:
@@ -20,8 +21,8 @@ public:
 private:
 	board_t board;
 
-	// Player* blk_player;
-	// Player* red_player;
+	Player* blk_player;
+	Player* red_player;
 
 	ChessTeam _cycle;
 
@@ -30,6 +31,10 @@ public:
 	void initBoardWithFile(std::string file);
 
 	bool MovePiece(pos_t sta, pos_t end);
+
+private:
+	void addEats(BasePiece* piece);
+
 };
 
 

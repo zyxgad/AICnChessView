@@ -1,6 +1,7 @@
 
 #include "GameManager.h"
 
+
 USING_NS_CC;
 
 
@@ -8,12 +9,9 @@ GameManager* GameManager::_instance = nullptr;
 
 GameManager::GameManager()
 :_status(GameStatus::NONE)
-,_scene(nullptr)
-,_board(nullptr)
 {
 }
 GameManager::~GameManager(){
-	this->_scene = nullptr;
 }
 
 GameManager* GameManager::getInstance(){
@@ -30,32 +28,44 @@ void GameManager::deleteInstatnce(){
 	}
 }
 
-void GameManager::initWithScene(*cocos2d::Scene scene){
-	this->_scene = scene;
-	
+void GameManager::initWithScene(Scene* scene){
+	auto director = Director::getInstance();
+	director->runWithScene(scene);
+	director->drawScene();
 }
 
 void GameManager::goHome(){
+	log("Go home");
+
+	auto scene = HomeScene::create();
+	if(scene == nullptr){
+		log("Init scene error");
+		return;
+	}
 	this->_status = GameStatus::HOME;
+
+	auto director = Director::getInstance();
+	director->popToRootScene();
+	director->pushScene((Scene*)(scene));
 }
 
-void GameManager::playOffline(){
-	//
+void GameManager::goOffline(){
+	log("Going offline");
+	this->_status = GameStatus::OFFLINE_SET;
 }
 
-void GameManager::playOnline(){
-	//
+void GameManager::goOnline(){
+	log("Going online");
+	this->_status = GameStatus::ONLINE_HOME;
 }
 
 void GameManager::startGame(){
-	auto board = PieceBoard::create();
-	board->setName("board");
-	board->setTag()
-	_scene->addChild(board);
+	log("Start game");
 }
 
 void GameManager::leftGame(){
-	//
+	log("Left game");
+	this->close();
 }
 
 void GameManager::close(){

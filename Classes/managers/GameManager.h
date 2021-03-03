@@ -2,10 +2,9 @@
 #ifndef __GAME_MANAGER_H__
 #define __GAME_MANAGER_H__
 
-#include "cocos2d.h"
-
-#include "chessTypes.h"
+#include "CheMacro.h"
 #include "layers/PieceBoard.h"
+#include "scenes/HomeScene.h"
 
 
 class GameManager{
@@ -20,19 +19,14 @@ public:
 
 private:
 	GameStatus _status;
-	cocos2d::Scene* _scene;
-	PieceBoard* _board;
-
 
 public:
 	GameStatus getStatus() const { return this->_status; }
-	cocos2d::Scene* getScene() const { return this->_scene; }
-	PieceBoard* getBoard() const { return this->_board; }
 
 	void initWithScene(cocos2d::Scene* scene);
 	void goHome();
-	void playOffline();
-	void playOnline();
+	void goOffline();
+	void goOnline();
 	void startGame();
 	void leftGame();
 	void close();

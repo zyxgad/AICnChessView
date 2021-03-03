@@ -14,7 +14,7 @@ public:
 
 	CREATE_FUNC(Player);
 private:
-	string _name;
+	std::string _name;
 };
 
 

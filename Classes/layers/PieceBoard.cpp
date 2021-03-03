@@ -33,8 +33,7 @@ bool PieceBoard::init(){
 	auto bgSprite = Sprite::create("images/chessbg1.jpg");
 	bgSprite->setAnchorPoint(Vec2::ZERO);
 	bgSprite->setPosition(Vec2::ZERO);
-	bgSprite->setName("bgSprite");
-	this->addChild(bgSprite);
+	this->addChild(bgSprite, 1, "bgSprite");
 
 	return true;
 }
@@ -72,5 +71,9 @@ bool PieceBoard::MovePiece(pos_t sta, pos_t end){
 	this->addEats(endPiece);
 	this->_cycle = (this->_cycle == ChessTeam::BLK) ?ChessTeam::RED :ChessTeam::BLK;
 	return true;
+}
+
+void PieceBoard::addEats(BasePiece* piece){
+	//
 }
 

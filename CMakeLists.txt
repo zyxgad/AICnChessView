@@ -59,17 +59,21 @@ list(APPEND GAME_SOURCE
     Classes/AppDelegate.cpp
     Classes/MainScene.cpp
     Classes/managers/GameManager.cpp
-    Classes/managers/PieceBoard.cpp
+    Classes/layers/PieceBoard.cpp
     Classes/piece/BasePiece.cpp
+    Classes/piece/PieceSoldier.cpp
     Classes/player/Player.cpp
+    Classes/scenes/HomeScene.cpp
 )
 list(APPEND GAME_HEADER
     Classes/AppDelegate.h
     Classes/MainScene.h
     Classes/managers/GameManager.h
-    Classes/managers/PieceBoard.h
+    Classes/layers/PieceBoard.h
     Classes/piece/BasePiece.h
+    Classes/piece/PieceSoldier.h
     Classes/player/Player.h
+    Classes/scenes/HomeScene.h
 )
 
 if(ANDROID)

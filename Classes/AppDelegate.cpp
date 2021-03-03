@@ -25,6 +25,8 @@
 #include "AppDelegate.h"
 #include "MainScene.h"
 
+#include "managers/GameManager.h"
+
 // #define USE_AUDIO_ENGINE 1
 
 #if USE_AUDIO_ENGINE
@@ -108,7 +110,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = MainScene::createScene();
 
     // run
-    director->runWithScene(scene);
+    GameManager::getInstance()->initWithScene(scene);
+    GameManager::getInstance()->goHome();
 
     return true;
 }

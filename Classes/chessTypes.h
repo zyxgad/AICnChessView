@@ -6,8 +6,9 @@
 class BasePiece;
 typedef BasePiece* board_t[10][9];
 
-enum struct GameStatus:uint8_t{
-	NONE = 0,
+enum struct GameStatus{
+	NONE,
+	LOADING,        // 加载界面
 	HOME,           // 主页
 	SETTING,        // 设置
 	OFFLINE_SET,    // 单机设置

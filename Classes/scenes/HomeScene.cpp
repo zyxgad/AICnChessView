@@ -12,7 +12,14 @@ HomeScene::~HomeScene(){
 }
 
 bool HomeScene::init(){
-	auto bgSprite = Sprite::create("images/chessbg1.jpg");
+	if(!(Scene::init())){
+		return false;
+	}
+
+	Size visSize = CHE_VISIBLE_SIZE();
+
+	auto bgSprite = Sprite::createWithTexture(
+		Director::getInstance()->getTextureCache()->getTextureForKey("images/backgrounds/chessbg1.jpg"));
 	if(bgSprite == nullptr){
 		log("bgSprite init error");
 		return false;
@@ -21,19 +28,38 @@ bool HomeScene::init(){
 	bgSprite->setPosition(Vec2::ZERO);
 	this->addChild(bgSprite, 0, "bgSprite");
 
-	// auto offline_btn = cocos2d::ui::Button::create(
-	// 	"images/buttons/normal_offline.png", 
-	// 	"images/buttons/selected_offline.png", 
-	// 	"images/buttons/disabled_offline.png");
-	// if(offline_btn == nullptr){
-	// 	log("offline_btn init error");
-	// 	return false;
-	// }
-	// offline_btn->setTitleText("offline_btn");
-	// offline_btn->addClickEventListener([&](Ref* sender){
-	// 	GameManager::getInstance()->goOffline();
-	// });
-	// this->addChild(offline_btn, 8, offline_btn);
+	// Init buttons
+	Label* btn_label;
+	ui::Button* button;
+
+	// close button
+	button = CHE_CREATE_BUTTON("close");
+	if(button == nullptr){
+		log("close_btn init error");
+		return false;
+	}
+	button->addClickEventListener([&](Ref* sender){
+		GameManager::getInstance()->close();
+	});
+	button->setPosition(Vec2(visSize.width - 30, visSize.height - 30));
+	this->addChild(button, 10, "close_btn");
+
+	// offline button
+	button = CHE_CREATE_BUTTON("offline");
+	if(button == nullptr){
+		log("offline_btn init error");
+		return false;
+	}
+	btn_label = Label::createWithTTF("单     机", "fonts/Songti.ttc", 27);
+	btn_label->setTextColor(Color4B(10, 10, 10, 255));
+	button->setTitleLabel(btn_label);
+	button->addClickEventListener([&](Ref* sender){
+		GameManager::getInstance()->goOffline();
+	});
+	button->setPosition(Vec2(visSize.width / 2, visSize.height - 200));
+	this->addChild(button, 8, "offline_btn");
+
+	// End init button
 
 	return true;
 }

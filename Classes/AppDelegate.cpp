@@ -36,10 +36,10 @@ using namespace cocos2d::experimental;
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(430, 720);
-static cocos2d::Size smallResolutionSize = cocos2d::Size(430, 720);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(768, 1024);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(1536, 2048);
+static cocos2d::Size designResolutionSize = cocos2d::Size(396, 704);
+static cocos2d::Size smallResolutionSize = cocos2d::Size(396, 704);
+static cocos2d::Size mediumResolutionSize = cocos2d::Size(576, 1024);
+static cocos2d::Size largeResolutionSize = cocos2d::Size(1152, 2048);
 
 AppDelegate::AppDelegate(){
 }
@@ -111,7 +111,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // run
     GameManager::getInstance()->initWithScene(scene);
-    GameManager::getInstance()->goHome();
+    GameManager::getInstance()->onLoad();
 
     return true;
 }

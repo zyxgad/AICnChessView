@@ -55,26 +55,20 @@ if(APPLE OR WINDOWS)
 endif()
 
 # add cross-platforms source files and header files
-list(APPEND GAME_SOURCE
-    Classes/AppDelegate.cpp
-    Classes/MainScene.cpp
-    Classes/managers/GameManager.cpp
-    Classes/layers/PieceBoard.cpp
-    Classes/piece/BasePiece.cpp
-    Classes/piece/PieceSoldier.cpp
-    Classes/player/Player.cpp
-    Classes/scenes/HomeScene.cpp
-)
-list(APPEND GAME_HEADER
-    Classes/AppDelegate.h
-    Classes/MainScene.h
-    Classes/managers/GameManager.h
-    Classes/layers/PieceBoard.h
-    Classes/piece/BasePiece.h
-    Classes/piece/PieceSoldier.h
-    Classes/player/Player.h
-    Classes/scenes/HomeScene.h
-)
+macro(find_dir dir_name)
+    file(GLOB FIND_SOURCE "Classes/${dir_name}/*.cpp" "Classes/${dir_name}/*.c")
+    file(GLOB FIND_HEADER "Classes/${dir_name}/*.hpp" "Classes/${dir_name}/*.h")
+    message(STATUS "Found 'Classes/${dir_name}/' has: ${FIND_SOURCE};${FIND_HEADER}")
+    list(APPEND GAME_SOURCE ${FIND_SOURCE})
+    list(APPEND GAME_HEADER ${FIND_HEADER})
+endmacro()
+
+find_dir(.)
+find_dir(layers)
+find_dir(managers)
+find_dir(piece)
+find_dir(player)
+find_dir(scenes)
 
 if(ANDROID)
     # change APP_NAME to the share library name for Android, it's value depend on AndroidManifest.xml

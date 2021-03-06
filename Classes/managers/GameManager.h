@@ -3,8 +3,6 @@
 #define __GAME_MANAGER_H__
 
 #include "CheMacro.h"
-#include "layers/PieceBoard.h"
-#include "scenes/HomeScene.h"
 
 
 class GameManager{
@@ -24,6 +22,8 @@ public:
 	GameStatus getStatus() const { return this->_status; }
 
 	void initWithScene(cocos2d::Scene* scene);
+	void goBack();
+	void onLoad();
 	void goHome();
 	void goOffline();
 	void goOnline();

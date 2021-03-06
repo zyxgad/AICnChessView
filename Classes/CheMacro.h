@@ -7,7 +7,11 @@
 
 #include "chessTypes.h"
 
-
+#define CHE_CREATE_BUTTON(name) (cocos2d::ui::Button::create(\
+		"images/buttons/" name "_normal.png",\
+		"images/buttons/" name "_selected.png",\
+		"images/buttons/" name "_disabled.png"))
+#define CHE_VISIBLE_SIZE() (cocos2d::Director::getInstance()->getVisibleSize())
 
 
 

@@ -1,6 +1,7 @@
 
 #include "GameManager.h"
-
+#include "scenes/HomeScene.h"
+#include "scenes/LoadingScene.h"
 
 USING_NS_CC;
 
@@ -23,6 +24,7 @@ GameManager* GameManager::getInstance(){
 
 void GameManager::deleteInstatnce(){
 	if(_instance != nullptr){
+		_instance->close();
 		delete _instance;
 		_instance = nullptr;
 	}
@@ -34,6 +36,35 @@ void GameManager::initWithScene(Scene* scene){
 	director->drawScene();
 }
 
+void GameManager::goBack(){
+	Director::getInstance()->popScene();
+}
+
+void GameManager::onLoad(){
+	log("On load");
+
+	appendTextureLoader("images/backgrounds/chessbg1.jpg");
+	appendTextureLoader("images/backgrounds/chessbg2.jpg");
+	appendTextureLoader("images/buttons/close_disabled.png");
+	appendTextureLoader("images/buttons/close_normal.png");
+	appendTextureLoader("images/buttons/close_selected.png");
+	appendTextureLoader("images/buttons/offline_disabled.png");
+	appendTextureLoader("images/buttons/offline_normal.png");
+	appendTextureLoader("images/buttons/offline_selected.png");
+	appendFrameLoader("images/pieces/pieces.png", "images/pieces/pieces.plist");
+
+	auto scene = LoadingScene::create();
+	if(scene == nullptr){
+		log("Init scene error");
+		return;
+	}
+
+	auto director = Director::getInstance();
+	director->pushScene((Scene*)(scene));
+
+	this->_status = GameStatus::LOADING;
+}
+
 void GameManager::goHome(){
 	log("Go home");
 
@@ -42,11 +73,11 @@ void GameManager::goHome(){
 		log("Init scene error");
 		return;
 	}
-	this->_status = GameStatus::HOME;
 
 	auto director = Director::getInstance();
-	director->popToRootScene();
 	director->pushScene((Scene*)(scene));
+
+	this->_status = GameStatus::HOME;
 }
 
 void GameManager::goOffline(){
@@ -65,11 +96,13 @@ void GameManager::startGame(){
 
 void GameManager::leftGame(){
 	log("Left game");
-	this->close();
 }
 
 void GameManager::close(){
 	Director::getInstance()->end();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+	exit(0);
+#endif
 }
 
 

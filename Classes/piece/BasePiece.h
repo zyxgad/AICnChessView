@@ -8,26 +8,26 @@
 
 class BasePiece : public cocos2d::Sprite {
 public:
-	BasePiece();
-	virtual ~BasePiece();
+    BasePiece();
+    virtual ~BasePiece();
 
-	virtual bool init();
+    virtual bool init();
 
 protected:
-	ChessType _type;
-	ChessTeam _team;
-	pos_t _pos;
+    ChessType _type;
+    ChessTeam _team;
+    pos_t _pos;
 
 public:
-	ChessType getType() const { return this->_type; }
+    ChessType getType() const { return this->_type; }
 
-	void setTeam(ChessTeam team);
-	ChessTeam getTeam() const { return this->_team; }
+    void setTeam(ChessTeam team);
+    ChessTeam getTeam() const { return this->_team; }
 
-	void setPos(pos_t pos);
-	pos_t getPos() const { return this->_pos; }
+    void setPos(pos_t pos);
+    pos_t getPos() const { return this->_pos; }
 
-	virtual bool canMove(pos_t end, board_t board) = 0;
+    virtual bool canMove(pos_t end, board_t board) = 0;
 
 
 };

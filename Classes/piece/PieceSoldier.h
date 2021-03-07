@@ -10,16 +10,16 @@
 
 class PieceSoldier :public BasePiece{
 public:
-	PieceSoldier();
-	virtual ~PieceSoldier();
+    PieceSoldier();
+    virtual ~PieceSoldier();
 
-	virtual bool init();
-	virtual void update(float dt);
+    virtual bool init();
+    virtual void update(float dt);
 
-	CREATE_FUNC(PieceSoldier)
+    CREATE_FUNC(PieceSoldier)
 
 public:
-	virtual bool canMove(pos_t end, board_t board);
+    virtual bool canMove(pos_t end, board_t board);
 };
 
 

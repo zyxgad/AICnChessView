@@ -6,15 +6,15 @@
 
 class Player :public cocos2d::Sprite{
 public:
-	Player();
-	virtual ~Player();
+    Player();
+    virtual ~Player();
 
-	virtual bool init();
-	virtual void update(float dt);
+    virtual bool init();
+    virtual void update(float dt);
 
-	CREATE_FUNC(Player);
+    CREATE_FUNC(Player);
 private:
-	std::string _name;
+    std::string _name;
 };
 
 

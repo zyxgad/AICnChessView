@@ -6,13 +6,13 @@
 
 class HomeScene : public cocos2d::Scene{
 public:
-	HomeScene();
-	virtual ~HomeScene();
+    HomeScene();
+    virtual ~HomeScene();
 
-	virtual bool init();
-	virtual void update(float dt);
+    virtual bool init();
+    virtual void update(float dt);
 
-	CREATE_FUNC(HomeScene)
+    CREATE_FUNC(HomeScene)
 
 };
 

@@ -10,30 +10,30 @@
 
 class PieceBoard : public cocos2d::Layer{
 public:
-	PieceBoard();
-	virtual ~PieceBoard();
+    PieceBoard();
+    virtual ~PieceBoard();
 
-	virtual bool init();
-	virtual void update(float dt);
+    virtual bool init();
+    virtual void update(float dt);
 
-	CREATE_FUNC(PieceBoard)
+    CREATE_FUNC(PieceBoard)
 
 private:
-	board_t board;
+    board_t board;
 
-	Player* blk_player;
-	Player* red_player;
+    Player* blk_player;
+    Player* red_player;
 
-	ChessTeam _cycle;
+    ChessTeam _cycle;
 
 public:
-	void initBoard();
-	void initBoardWithFile(std::string file);
+    void initBoard();
+    void initBoardWithFile(std::string file);
 
-	bool MovePiece(pos_t sta, pos_t end);
+    bool MovePiece(pos_t sta, pos_t end);
 
 private:
-	void addEats(BasePiece* piece);
+    void addEats(BasePiece* piece);
 
 };
 

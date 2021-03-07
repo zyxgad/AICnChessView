@@ -1,4 +1,7 @@
 
+#CMakes
+/CMakeFiles
+
 #Mac OS
 .DS_Store
 

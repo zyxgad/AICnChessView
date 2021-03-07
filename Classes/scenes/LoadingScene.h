@@ -5,17 +5,17 @@
 #include "CheMacro.h"
 
 enum class loadTypes{
-	TEXTURE_CACHE,
-	SPRITE_FRAME_CACHE,
+    TEXTURE_CACHE,
+    SPRITE_FRAME_CACHE,
 };
 
 typedef struct{
-	loadTypes           loadtype;
+    loadTypes           loadtype;
 
-	std::string         imgPath;
-	std::string         plPath;
+    std::string         imgPath;
+    std::string         plPath;
 
-	cocos2d::Texture2D* texture;
+    cocos2d::Texture2D* texture;
 } loadItem_t;
 
 void appendTextureLoader(std::string imgPath);
@@ -25,13 +25,13 @@ void appendFrameLoader(std::string imgPath, std::string plPath);
 
 class LoadingScene :public cocos2d::Scene{
 public:
-	LoadingScene();
-	virtual ~LoadingScene();
+    LoadingScene();
+    virtual ~LoadingScene();
 
-	virtual bool init();
-	virtual void update(float dt);
+    virtual bool init();
+    virtual void update(float dt);
 
-	CREATE_FUNC(LoadingScene)
+    CREATE_FUNC(LoadingScene)
 };
 
 

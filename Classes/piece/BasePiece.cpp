@@ -14,18 +14,18 @@ BasePiece::~BasePiece(){
 }
 
 bool BasePiece::init(){
-	if(!(Sprite::init())){
-		return false;
-	}
-	return true;
+    if(!(Sprite::init())){
+        return false;
+    }
+    return true;
 }
 
 void BasePiece::setTeam(ChessTeam team){
-	this->_team = team;
+    this->_team = team;
 }
 
 void BasePiece::setPos(pos_t pos){
-	this->_pos = pos;
+    this->_pos = pos;
 }
 
 

@@ -28,18 +28,18 @@
 USING_NS_CC;
 
 Scene* MainScene::createScene(){
-	Scene* scene = MainScene::create();
-	return scene;
+    Scene* scene = MainScene::create();
+    return scene;
 }
 
 bool MainScene::init(){
-	if(!Scene::init()){
-		return false;
-	}
+    if(!Scene::init()){
+        return false;
+    }
 
-	// std::string canWritePath = FileUtils::getInstance()->getWritablePath();
-	// log("You can write files at '%s'", canWritePath.c_str());
+    // std::string canWritePath = FileUtils::getInstance()->getWritablePath();
+    // log("You can write files at '%s'", canWritePath.c_str());
 
-	return true;
+    return true;
 }
 

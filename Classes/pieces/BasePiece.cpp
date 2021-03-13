@@ -13,13 +13,6 @@ BasePiece::BasePiece()
 BasePiece::~BasePiece(){
 }
 
-bool BasePiece::init(){
-    if(!(Sprite::init())){
-        return false;
-    }
-    return true;
-}
-
 void BasePiece::setTeam(ChessTeam team){
     this->_team = team;
 }

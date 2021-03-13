@@ -66,9 +66,12 @@ endmacro()
 find_dir(.)
 find_dir(layers)
 find_dir(managers)
-find_dir(piece)
+find_dir(pieces)
 find_dir(player)
 find_dir(scenes)
+find_dir(sprites)
+find_dir(utils)
+find_dir(web)
 
 if(ANDROID)
     # change APP_NAME to the share library name for Android, it's value depend on AndroidManifest.xml

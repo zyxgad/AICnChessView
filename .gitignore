@@ -1,14 +1,21 @@
 
-#CMakes
-/CMakeFiles
+#Builds
+/bin
+/*-build/*.build
+/*-build/bin
+/*-build/build
+/*-build/cmake_install.cmake
+/*-build/CMakeCache.txt
+/*-build/CMakeFiles
+/*-build/CMakeScripts
+/*-build/engine
+/*-build/lib
+
+
+#cocos2dx
+/cocos2d
+
 
 #Mac OS
 .DS_Store
-
-#Builds
-/bin
-/*-build
-
-#libs
-/cocos2d
 

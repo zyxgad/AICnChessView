@@ -17,10 +17,17 @@ enum struct GameStatus{
     GAME_WAITING,   // 游戏等待中
 };
 
+enum struct LoginType:uint8_t{
+    UNKNOW  = 0,    // 未定义
+    OFFLINE = 1,    // 离线模式（单机）
+    ONLINE  = 2,    // 在线模式（联机）
+    ROBOT   = 9,    // 机器人
+};
+
 enum struct ChessTeam:uint8_t{
     NONE = 0,
-    RED = 1,
-    BLK = 2
+    RED  = 1,
+    BLK  = 2
 };
 
 enum struct ChessType:uint8_t{
@@ -31,12 +38,19 @@ enum struct ChessType:uint8_t{
     SOWAR,    // 马
     MINISTER, // 象/相
     GUARD,    // 士/仕
-    GENERAL  // 将/帅
+    GENERAL   // 将/帅
 };
 
-struct pos_t{
+typedef struct{
     uint8_t x;
     uint8_t y;
-};
+} pos_t;
+
+typedef struct{
+    std::string name;
+    std::string head;
+} userdata_t;
+
+typedef uint32_t chekey_t;
 
 #endif // __CHESS_TYPES_H__

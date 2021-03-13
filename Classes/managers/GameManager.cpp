@@ -6,6 +6,18 @@
 
 USING_NS_CC;
 
+static void appendLoaders(){
+    appendTextureLoader("images/backgrounds/chessbg1.jpg");
+    appendTextureLoader("images/backgrounds/chessbg2.jpg");
+//    appendTextureLoader("images/buttons/close_disabled.png");
+//    appendTextureLoader("images/buttons/close_normal.png");
+//    appendTextureLoader("images/buttons/close_selected.png");
+//    appendTextureLoader("images/buttons/offline_disabled.png");
+//    appendTextureLoader("images/buttons/offline_normal.png");
+//    appendTextureLoader("images/buttons/offline_selected.png");
+    appendFrameLoader("images/buttons/buttons.png", "images/buttons/buttons.plist");
+    appendFrameLoader("images/pieces/pieces.png", "images/pieces/pieces.plist");
+}
 
 GameManager* GameManager::_instance = nullptr;
 
@@ -43,21 +55,13 @@ void GameManager::goBack(){
 }
 
 void GameManager::onLoad(){
-    log("On load");
+    CCLOGINFO("On load");
 
-    appendTextureLoader("images/backgrounds/chessbg1.jpg");
-    appendTextureLoader("images/backgrounds/chessbg2.jpg");
-    appendTextureLoader("images/buttons/close_disabled.png");
-    appendTextureLoader("images/buttons/close_normal.png");
-    appendTextureLoader("images/buttons/close_selected.png");
-    appendTextureLoader("images/buttons/offline_disabled.png");
-    appendTextureLoader("images/buttons/offline_normal.png");
-    appendTextureLoader("images/buttons/offline_selected.png");
-    appendFrameLoader("images/pieces/pieces.png", "images/pieces/pieces.plist");
+    appendLoaders();
 
     auto scene = LoadingScene::create();
     if(scene == nullptr){
-        log("Init scene error");
+        CCLOGWARN("Init scene error");
         return;
     }
 
@@ -68,11 +72,11 @@ void GameManager::onLoad(){
 }
 
 void GameManager::goHome(){
-    log("Go home");
+    CCLOGINFO("Go home");
 
     auto scene = HomeScene::create();
     if(scene == nullptr){
-        log("Init scene error");
+        CCLOGWARN("Init scene error");
         return;
     }
 
@@ -83,10 +87,10 @@ void GameManager::goHome(){
 }
 
 void GameManager::goOffline(){
-    log("Going offline");
+    CCLOGINFO("Going offline");
     auto scene = OfflineScene::create();
     if(scene == nullptr){
-        log("Init scene error");
+        CCLOGWARN("Init scene error");
         return;
     }
 
@@ -97,19 +101,20 @@ void GameManager::goOffline(){
 }
 
 void GameManager::goOnline(){
-    log("Going online");
+    CCLOGINFO("Going online");
     this->_status = GameStatus::ONLINE_HOME;
 }
 
 void GameManager::startGame(){
-    log("Start game");
+    CCLOGINFO("Start game");
 }
 
 void GameManager::leftGame(){
-    log("Left game");
+    CCLOGINFO("Left game");
 }
 
 void GameManager::close(){
+    CCLOGINFO("Close game");
     Director::getInstance()->end();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);

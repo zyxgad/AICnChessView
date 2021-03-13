@@ -50,9 +50,10 @@ bool LoadingScene::init(){
         return false;
     }
 
-    auto bgSprite = Sprite::create("images/backgrounds/chessbg1.jpg");
+    auto bgSprite = Sprite::createWithTexture(
+        Director::getInstance()->getTextureCache()->addImage("images/backgrounds/chessbg1.jpg"));
     if(bgSprite == nullptr){
-        log("bgSprite init error");
+        CCLOGWARN("bgSprite init error");
         return false;
     }
     bgSprite->setAnchorPoint(Vec2::ZERO);
@@ -60,7 +61,7 @@ bool LoadingScene::init(){
     this->addChild(bgSprite, 0, "bgSprite");
 
     this->scheduleUpdate();
-    log("Loading size: %lu", loadVector.size());
+    CCLOGINFO("Loading size: %lu", loadVector.size());
 
     return true;
 }
@@ -73,7 +74,7 @@ void LoadingScene::update(float dt){
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if(loadCount >= loadVector.size()){
-        log("[100 %%]Loading finish");
+        CCLOGINFO("[100 %%]Loading finish");
         GameManager::getInstance()->goBack();
         GameManager::getInstance()->goHome();
         return;
@@ -93,7 +94,7 @@ void LoadingScene::update(float dt){
     }
 
     loadingItem = loadVector.at(loadCount);
-    log("[%04.1f%%]Loading '%s'...", 
+    CCLOGINFO("[%04.1f%%]Loading '%s'...",
         100.0f * loadCount / loadVector.size(),
         loadingItem->imgPath.c_str());
 

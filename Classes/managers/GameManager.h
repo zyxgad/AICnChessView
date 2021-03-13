@@ -17,9 +17,11 @@ public:
 
 private:
     GameStatus _status;
+    std::string _dirPath;
 
 public:
     GameStatus getStatus() const { return this->_status; }
+    std::string getdirPath() const { return this->_dirPath; }
 
     void initWithScene(cocos2d::Scene* scene);
     void goBack();

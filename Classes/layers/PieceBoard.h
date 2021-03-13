@@ -5,7 +5,8 @@
 #include "cocos2d.h"
 
 #include "CheMacro.h"
-#include "piece/BasePiece.h"
+#include "sprites/PieceSprite.h"
+#include "pieces/BasePiece.h"
 #include "player/Player.h"
 
 class PieceBoard : public cocos2d::Layer{
@@ -19,7 +20,7 @@ public:
     CREATE_FUNC(PieceBoard)
 
 private:
-    board_t board;
+    board_t _board;
 
     Player* blk_player;
     Player* red_player;
@@ -27,6 +28,15 @@ private:
     ChessTeam _cycle;
 
 public:
+    board_t getBoard() const { return this->_board; }
+
+    void setBlkPlayer(Player* player);
+    Player* getBlkPlayer() const { return this->blk_player; }
+    void setRedPlayer(Player* player);
+    Player* getRedPlayer() const { return this->red_player; }
+
+    ChessTeam getCycle() const { return this->_cycle; }
+
     void initBoard();
     void initBoardWithFile(std::string file);
 

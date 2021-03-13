@@ -2,19 +2,34 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-#include "cocos2d.h"
+#include "CheMacro.h"
 
-class Player :public cocos2d::Sprite{
+class Player : public cocos2d::Ref{
 public:
     Player();
-    virtual ~Player();
+    ~Player();
 
-    virtual bool init();
-    virtual void update(float dt);
+public:
+    static Player* create(){
+        Player* player = new (std::nothrow) Player();
+        if (!player){
+            return nullptr;
+        }
+        return player;
+    }
 
-    CREATE_FUNC(Player);
-private:
+
+protected:
     std::string _name;
+    std::string _head;
+    LoginType _login_type;
+
+public:
+    bool loginWithOffline(std::string name);
+    bool loginWithOnline(std::string name, std::string pwd);
+    bool loginWithRobot();
+    void logout();
+
 };
 
 

@@ -37,9 +37,13 @@ bool MainScene::init(){
         return false;
     }
 
-    // std::string canWritePath = FileUtils::getInstance()->getWritablePath();
-    // log("You can write files at '%s'", canWritePath.c_str());
+    Size winSize = Director::getInstance()->getWinSize();
+    Size visSize = Director::getInstance()->getVisibleSize();
+    Size frmSize = Director::getInstance()->getOpenGLView()->getFrameSize();
 
+    CCLOG("The win size is: [%.0fpx, %.0fpx]", winSize.width, winSize.height);
+    CCLOG("The vis size is: [%.0fpx, %.0fpx]", visSize.width, visSize.height);
+    CCLOG("The frm size is: [%.0fpx, %.0fpx]", frmSize.width, frmSize.height);
     return true;
 }
 

@@ -13,13 +13,9 @@ public:
     PieceSoldier();
     virtual ~PieceSoldier();
 
-    virtual bool init();
-    virtual void update(float dt);
-
-    CREATE_FUNC(PieceSoldier)
-
 public:
-    virtual bool canMove(pos_t end, board_t board);
+    virtual bool canMove(pos_t end, board_t board) const;
+    virtual std::string getName(pos_t end, board_t board) const {return std::string("solider"); }
 };
 
 

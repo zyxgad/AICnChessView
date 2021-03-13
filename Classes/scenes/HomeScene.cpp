@@ -20,7 +20,7 @@ bool HomeScene::init(){
 
     auto bgSprite = Sprite::createWithTexture(CHE_GETTEXTURE("images/backgrounds/chessbg1.jpg"));
     if(bgSprite == nullptr){
-        log("bgSprite init error");
+        CCLOGWARN("bgSprite init error");
         return false;
     }
     bgSprite->setAnchorPoint(Vec2::ZERO);
@@ -34,7 +34,7 @@ bool HomeScene::init(){
     // close button
     button = CHE_CREATE_BUTTON("close");
     if(button == nullptr){
-        log("close_btn init error");
+        CCLOGWARN("close_btn init error");
         return false;
     }
     button->addClickEventListener([&](Ref* sender){
@@ -46,7 +46,7 @@ bool HomeScene::init(){
     // offline button
     button = CHE_CREATE_BUTTON("offline");
     if(button == nullptr){
-        log("offline_btn init error");
+        CCLOGWARN("offline_btn init error");
         return false;
     }
     btn_label = Label::createWithTTF("单     机", "fonts/Songti.ttc", 27);
@@ -59,6 +59,8 @@ bool HomeScene::init(){
     this->addChild(button, 8, "offline_btn");
 
     // End init button
+
+//    this->scheduleUpdate();
 
     return true;
 }
